@@ -1,0 +1,22 @@
+# AI helpers
+.claude/
+.codex/
+.agents/
+
+AGENTS.md
+CLAUDE.md
+
+# local views
+localview/
+
+# 私有制作工作台（严禁进入公开站）
+third_party/private/
+
+# Node / VitePress 构建产物
+node_modules/
+site/.vitepress/dist/
+site/.vitepress/cache/
+site/.vitepress/.build-cache/
+site/.vitepress/.build-tmp/
+*.tgz
+.pnpm-store/

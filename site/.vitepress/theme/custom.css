@@ -1,0 +1,559 @@
+/* ================================================================
+   AELS Prism · 暖琥珀电子书主题
+   ── 单一暖色相(H≈22–28°) + 暖中性纸底 + 衬线正文 + 克制动效
+   ── 默认 sepia 暖纸;html[data-reader="light|dark"] 切档
+   ================================================================ */
+
+/* ── 字体栈 ─────────────────────────────────────────────────── */
+:root {
+  --vp-font-family-base: Georgia, "Songti SC", "Source Han Serif SC",
+    "Noto Serif CJK SC", SimSun, "宋体", serif;
+  --vp-font-family-base-title: "PingFang SC", "Microsoft YaHei",
+    "Source Han Sans SC", "Noto Sans CJK SC", sans-serif;
+  --vp-font-family-mono: "JetBrains Mono", "Fira Code", Consolas,
+    "SF Mono", Menlo, "Noto Sans Mono CJK SC", "Microsoft YaHei",
+    monospace;
+
+  --vp-layout-max-width: 72rem;
+}
+
+/* ── 默认主题:sepia 暖纸(首屏即"书",无 FOUC)────────────────── */
+:root {
+  --vp-c-bg: #f5efe2;
+  --vp-c-bg-soft: #ece2cf;
+  --vp-c-bg-mute: #ece2cf;
+  --vp-c-bg-up: #faf6ec;
+  --vp-c-bg-down: #e4d9c2;
+  --vp-c-bg-alt: #efe7d6;
+  --vp-c-bg-elv: #f8f3e8;
+
+  --vp-c-text-1: #3a322a;
+  --vp-c-text-2: #6a5f50;
+  --vp-c-text-3: #736656;
+
+  --vp-c-divider: #ddd0b6;
+  --vp-c-border: #d2c3a3;
+  --vp-c-gutter: #ddd0b6;
+  --vp-c-border-strong: #8c7a5a;
+
+  --vp-c-brand-1: #9a4408;
+  --vp-c-brand-2: #b4530c;
+  --vp-c-brand-3: #c9701c;
+  --vp-c-brand-soft: rgba(154, 68, 8, 0.10);
+
+  --vp-c-tip-1: #9a4408;
+  --vp-c-tip-soft: rgba(154, 68, 8, 0.08);
+  --vp-c-warning-1: #8a5a00;
+  --vp-c-warning-soft: rgba(138, 90, 0, 0.10);
+  --vp-c-danger-1: #9b2c1a;
+  --vp-c-danger-soft: rgba(155, 44, 26, 0.08);
+
+  /* 代码块跟随暖纸底(暖化 github-light) */
+  --vp-code-block-bg: var(--vp-c-bg-soft);
+
+  /* 防御性 alias:即使某处仍引用 indigo/purple/green,也落到暖色 */
+  --vp-c-indigo-1: var(--vp-c-brand-1);
+  --vp-c-indigo-2: var(--vp-c-brand-2);
+  --vp-c-indigo-3: var(--vp-c-brand-3);
+  --vp-c-indigo-soft: var(--vp-c-brand-soft);
+  --vp-c-purple-1: var(--vp-c-brand-1);
+  --vp-c-purple-2: var(--vp-c-brand-2);
+  --vp-c-purple-soft: var(--vp-c-brand-soft);
+  --vp-c-green-1: var(--vp-c-brand-1);
+  --vp-c-green-soft: var(--vp-c-brand-soft);
+}
+
+/* ── light 档:更亮的暖象牙 ──────────────────────────────────── */
+html[data-reader="light"] {
+  --vp-c-bg: #fbf7f0;
+  --vp-c-bg-soft: #f3ecdf;
+  --vp-c-bg-mute: #f3ecdf;
+  --vp-c-bg-up: #ffffff;
+  --vp-c-bg-down: #ede4d3;
+  --vp-c-bg-alt: #f7f1e6;
+  --vp-c-bg-elv: #fdfbf7;
+
+  --vp-c-text-1: #3a2e23;
+  --vp-c-text-2: #6b5a49;
+  --vp-c-text-3: #7a6c58;
+
+  --vp-c-divider: #e5dac6;
+  --vp-c-border: #d9ccb4;
+  --vp-c-gutter: #e5dac6;
+  --vp-c-border-strong: #8c7a5a;
+}
+
+/* ── dark 档:暖墨夜(稍亮 #221C18) ───────────────────────────── */
+/* 同步触发 VitePress .dark 依赖(代码主题/内部暗组件由 JS 加 .dark class) */
+html[data-reader="dark"] {
+  --vp-c-bg: #221c18;
+  --vp-c-bg-soft: #2b2420;
+  --vp-c-bg-mute: #2b2420;
+  --vp-c-bg-up: #2e2622;
+  --vp-c-bg-down: #1a1512;
+  --vp-c-bg-alt: #261f1b;
+  --vp-c-bg-elv: #2d2521;
+
+  --vp-c-text-1: #ede4d6;
+  --vp-c-text-2: #b8a992;
+  --vp-c-text-3: #938470;
+
+  --vp-c-divider: #3e3429;
+  --vp-c-border: #4a3e31;
+  --vp-c-gutter: #3e3429;
+  --vp-c-border-strong: #75624f;
+
+  --vp-c-brand-1: #f0a85c;
+  --vp-c-brand-2: #e89748;
+  --vp-c-brand-3: #c9701c;
+  --vp-c-brand-soft: rgba(240, 168, 92, 0.14);
+
+  --vp-c-tip-1: #f0a85c;
+  --vp-c-tip-soft: rgba(240, 168, 92, 0.12);
+  --vp-c-warning-1: #e0b23a;
+  --vp-c-warning-soft: rgba(224, 178, 58, 0.12);
+  --vp-c-danger-1: #e06850;
+  --vp-c-danger-soft: rgba(224, 104, 80, 0.12);
+}
+
+/* ================================================================
+   文章页布局：从视口左侧开始排布
+   
+   72rem 的全局最大宽度用于首页等居中页面。VitePress 在
+   ≥1440px 时也会用它偏移文档页的导航、侧栏和正文，在宽屏上
+   形成巨大的左留白。只对“带侧栏”的三个布局根节点使用全视口宽度：
+   这样可以让 VitePress 自身的 scoped 样式算出 0 偏移，也能保证三处对齐。
+   ================================================================ */
+@media (min-width: 1440px) {
+  .VPNavBar.has-sidebar,
+  .VPSidebar,
+  .VPContent.has-sidebar {
+    --vp-layout-max-width: 100vw;
+  }
+
+  .VPDoc.has-sidebar .container {
+    justify-content: flex-start;
+  }
+}
+/* 无大纲页(stub):正文左对齐贴 sidebar,阅读宽 44rem;
+   有大纲页(has-aside)沿用 VitePress 默认 688px + 右侧大纲 */
+.VPDoc.has-sidebar .content-container {
+  margin-inline-start: 0;
+  margin-inline-end: auto;
+  max-width: 44rem;
+}
+.VPDoc.has-sidebar .vp-doc {
+  max-width: none;
+  margin-inline: 0;
+}
+
+/* ── 读者三件套:字体/字号覆盖(主题色板由 data-reader 上面三档处理) ── */
+html[data-font="sans"] {
+  --vp-font-family-base: "PingFang SC", "Microsoft YaHei",
+    "Source Han Sans SC", "Noto Sans CJK SC", sans-serif;
+}
+html[data-size="small"] .vp-doc { font-size: 0.9375rem; }   /* 15px */
+html[data-size="large"] .vp-doc { font-size: 1.1875rem; }   /* 19px */
+/* default(17px)由 .vp-doc 默认值提供,无需覆盖 */
+
+/* ── 正文排版:17px / 1.75 / 44rem(≈41 汉字/行) ──────────────── */
+.vp-doc {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4 {
+  font-family: var(--vp-font-family-base-title);
+  color: var(--vp-c-text-1);
+  letter-spacing: 0;
+}
+.vp-doc h1 { font-size: 2rem; font-weight: 700; line-height: 1.4; }
+.vp-doc h2 {
+  font-size: 1.5rem; font-weight: 650; line-height: 1.45;
+  border-top: 1px solid var(--vp-c-divider);
+  padding-top: 1.4em; margin-top: 2em;
+}
+.vp-doc h3 { font-size: 1.1875rem; font-weight: 600; line-height: 1.5; }
+.vp-doc h4 { font-size: 1rem; font-weight: 600; letter-spacing: 0.02em; }
+
+.vp-doc p { margin-bottom: 1.2em; }
+
+/* ── 代码块:14px + 中文等宽回退 + 暖底 ───────────────────────── */
+.vp-doc div[class*='language-'] {
+  border-radius: 6px;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  border: 1px solid var(--vp-c-divider);
+}
+.vp-doc div[class*='language-'] code {
+  font-size: 0.875rem;
+  font-family: var(--vp-font-family-mono);
+}
+.vp-doc :not(pre) > code {
+  font-size: 0.9em;
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  font-family: var(--vp-font-family-mono);
+}
+
+/* ── 表格:去斑马纹,靠边线 ───────────────────────────────────── */
+.vp-doc table {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.vp-doc table th {
+  font-weight: 600;
+  background-color: var(--vp-c-bg-soft);
+}
+.vp-doc table tr:nth-child(even) {
+  background-color: transparent;
+}
+
+/* ── blockquote:暖中性引用,左边线 brand-1 ───────────────────── */
+.vp-doc blockquote {
+  border-left: 3px solid var(--vp-c-brand-1);
+  border-radius: 0 3px 3px 0;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+}
+
+/* ── 链接:solid 细下划线,hover 变 brand ──────────────────────── */
+.vp-doc a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.12s ease-out;
+}
+.vp-doc a:hover {
+  color: var(--vp-c-brand-1);
+}
+
+/* ── 图片:细边框替代大投影 ──────────────────────────────────── */
+.vp-doc img {
+  border-radius: 6px;
+  border: 1px solid var(--vp-c-divider);
+}
+
+/* ── hr / custom-block ──────────────────────────────────────── */
+.vp-doc hr {
+  border: none;
+  border-top: 1px solid var(--vp-c-divider);
+  margin: 2.5em 0;
+}
+.vp-doc .custom-block {
+  border-radius: 4px;
+  margin: 1.2em 0;
+}
+
+/* ================================================================
+   Home — 去三色渐变标题 / 去 135° 大斜渐变背景 / 降级塑料动效
+   ================================================================ */
+.VPHero {
+  padding-bottom: 48px !important;
+}
+@media (min-width: 960px) {
+  .VPHero { padding-bottom: 64px !important; }
+}
+/* (原 .VPHome .VPHero::before 135° 渐变伪元素已删除,不再生成) */
+
+/* Hero 标题:从三色渐变文字改纯色 brand-1 */
+.VPHero .name.clip {
+  background: none !important;
+  -webkit-text-fill-color: var(--vp-c-brand-1) !important;
+  color: var(--vp-c-brand-1) !important;
+}
+.VPHero .tagline {
+  font-weight: 400 !important;
+  color: var(--vp-c-text-2) !important;
+}
+
+/* (原 @keyframes feature-fade-up 与 12 级 nth-child 错峰入场已删除) */
+
+.VPFeatures {
+  padding-top: 16px;
+  padding-bottom: 48px;
+}
+
+/* Feature 卡:hover 从"上浮4px+大投影+图标放大"降为"轻提2px+分层小投影" */
+.VPFeature {
+  border: 1px solid var(--vp-c-border-strong) !important;
+  border-radius: 10px !important;
+  background-color: var(--vp-c-bg) !important;
+  box-shadow: 0 1px 2px rgba(58, 46, 35, 0.05) !important;
+  transition: border-color 0.18s cubic-bezier(.4, 0, .2, 1),
+              box-shadow 0.18s cubic-bezier(.4, 0, .2, 1),
+              transform 0.18s cubic-bezier(.4, 0, .2, 1) !important;
+}
+.VPFeature.link:hover {
+  border-color: var(--vp-c-brand-1) !important;
+  box-shadow: 0 2px 4px rgba(58, 46, 35, 0.06),
+              0 8px 16px rgba(58, 46, 35, 0.08) !important;
+  transform: translateY(-2px) !important;
+}
+.VPFeature .box { padding: 24px 20px !important; }
+.VPFeature .icon {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 10px !important;
+  background-color: var(--vp-c-brand-soft) !important;
+  color: var(--vp-c-brand-1) !important;
+  font-size: 20px !important;
+  transition: color 0.18s ease !important;
+}
+.VPFeature .title {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+  color: var(--vp-c-text-1) !important;
+  transition: color 0.18s ease;
+}
+.VPFeature.link:hover .title { color: var(--vp-c-brand-1) !important; }
+.VPFeature .details {
+  font-size: 13.5px !important;
+  line-height: 1.7 !important;
+  color: var(--vp-c-text-2) !important;
+  font-weight: 400 !important;
+}
+.VPFeature .link-text-icon { transition: transform 0.18s ease; }
+.VPFeature.link:hover .link-text-icon { transform: translateX(3px); }
+
+/* ── Contributor Card:同 Feature 卡降级 ──────────────────────── */
+.contributor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+  margin: 1.5em 0;
+}
+.contributor-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid var(--vp-c-border-strong);
+  border-radius: 10px;
+  background-color: var(--vp-c-bg);
+  box-shadow: 0 1px 2px rgba(58, 46, 35, 0.05);
+  transition: border-color 0.18s cubic-bezier(.4, 0, .2, 1),
+              box-shadow 0.18s cubic-bezier(.4, 0, .2, 1),
+              transform 0.18s cubic-bezier(.4, 0, .2, 1);
+  text-decoration: none !important;
+  color: inherit;
+}
+.contributor-card:hover {
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 2px 4px rgba(58, 46, 35, 0.06),
+              0 8px 16px rgba(58, 46, 35, 0.08);
+  transform: translateY(-2px);
+}
+.contributor-card .card-avatar {
+  width: 52px;
+  height: 52px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--vp-c-divider);
+  flex-shrink: 0;
+  transition: border-color 0.18s ease;
+}
+.contributor-card:hover .card-avatar { border-color: var(--vp-c-brand-1); }
+.contributor-card .card-body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.contributor-card .card-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  text-decoration: none !important;
+  transition: color 0.18s ease;
+}
+.contributor-card .card-name:hover { color: var(--vp-c-brand-1) !important; }
+.contributor-card .card-role {
+  margin: 0;
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+  line-height: 1.5;
+}
+.contributor-card .card-types {
+  margin: 0;
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+.contributor-card .card-desc {
+  margin: 0;
+  font-size: 13px;
+  color: var(--vp-c-text-3);
+  line-height: 1.6;
+}
+
+/* ── 响应式 ─────────────────────────────────────────────────── */
+@media (max-width: 639px) {
+  .VPFeature .box { padding: 18px 16px !important; }
+  .VPFeature .icon {
+    width: 38px !important; height: 38px !important;
+    border-radius: 8px !important; font-size: 18px !important;
+  }
+  .VPFeature .title { font-size: 14px !important; }
+  .VPFeature .details { font-size: 12.5px !important; }
+
+  .contributor-grid { grid-template-columns: 1fr; }
+  .contributor-card { padding: 16px; gap: 12px; }
+  .contributor-card .card-avatar { width: 44px; height: 44px; }
+}
+
+/* ── 全局动效降级兜底 ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ================================================================
+   首页 · 书封 + 目录(layout: page,放宽正文限宽以容纳目录网格)
+   ================================================================ */
+/* layout: page(VPPage)无 .vp-doc 包裹,首页靠 .book-home 自身限宽居中,左右留白 */
+.book-home {
+  max-width: 56rem;
+  margin-inline: auto;
+  padding: 1rem 1.5rem 0;
+}
+
+.book-cover {
+  text-align: center;
+  padding: 1.5rem 0 1rem;
+}
+.book-eyebrow {
+  font-family: var(--vp-font-family-base-title);
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-3);
+  margin: 0 0 0.8em;
+}
+.book-title {
+  font-family: var(--vp-font-family-base-title);
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: var(--vp-c-brand-1);
+  margin: 0 0 0.15em;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.book-subtitle {
+  font-family: var(--vp-font-family-base-title);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--vp-c-text-2);
+  margin: 0 0 1.2em;
+}
+.book-tagline {
+  max-width: 34rem;
+  margin: 0 auto;
+  color: var(--vp-c-text-2);
+  line-height: 1.75;
+  font-size: 1rem;
+}
+
+/* 暖光棱镜:全站唯一允许的渐变(色相限制在 H 10–40°),品牌叙事出口 */
+.prism-spectrum {
+  height: 3px;
+  width: 12rem;
+  margin: 2.2rem auto;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    #e0a87a 0%,
+    #c9701c 35%,
+    #9a4a12 70%,
+    #7a3410 100%
+  );
+}
+
+.book-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+.book-btn {
+  display: inline-block;
+  padding: 0.55em 1.5em;
+  border-radius: 8px;
+  border: 1px solid var(--vp-c-border-strong);
+  background-color: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  font-family: var(--vp-font-family-base-title);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none !important;
+  transition: border-color 0.18s ease, background-color 0.18s ease,
+              color 0.18s ease;
+}
+.book-btn:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+}
+.book-btn--primary {
+  background-color: var(--vp-c-brand-1);
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-white);
+}
+.book-btn--primary:hover {
+  background-color: var(--vp-c-brand-2);
+  border-color: var(--vp-c-brand-2);
+  color: var(--vp-c-white);
+}
+
+.book-toc { margin-top: 2.5rem; }
+.book-toc-title {
+  font-family: var(--vp-font-family-base-title);
+  font-size: 1.4rem;
+  font-weight: 650;
+  color: var(--vp-c-text-1);
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+.book-toc-desc {
+  color: var(--vp-c-text-2);
+  line-height: 1.75;
+  margin-bottom: 1.5em;
+  max-width: 44rem;
+}
+.book-toc-note {
+  margin-top: 1.8em;
+  padding-top: 1.2em;
+  border-top: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-3);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+.book-toc-note a {
+  color: var(--vp-c-brand-1);
+}
+
+/* ── 打印 ───────────────────────────────────────────────────── */
+@media print {
+  .vp-doc {
+    font-size: 11pt;
+    line-height: 1.7;
+    max-width: none;
+  }
+}
