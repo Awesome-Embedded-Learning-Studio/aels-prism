@@ -20,3 +20,6 @@ site/.vitepress/.build-cache/
 site/.vitepress/.build-tmp/
 *.tgz
 .pnpm-store/
+
+# VitePress 临时构建缓存
+site/.vitepress/.temp/

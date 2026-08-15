@@ -45,9 +45,9 @@ export default defineProject({
     rootPages: ['index.md'],
   },
 
-  // 先全关保首次绿构建；第一篇真实 C/汇编文章（M2 MVP）落地时开 cppTemplateEscape
+  // 第一篇真实 C 文章（M1）已落地，开 cppTemplateEscape 防 C 模板语法被 Vue 误解析
   plugins: {
-    cppTemplateEscape: false,
+    cppTemplateEscape: true,
     kbd: false,
     math: false,
     mermaid: true,

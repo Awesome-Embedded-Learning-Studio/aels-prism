@@ -30,7 +30,7 @@ order: 0
 
 | # | 标题 | 落点 | 状态 |
 |---|------|------|------|
-| [M1](./m1-gcc-stages-and-sections) | 一行 gcc 到 .o 里的段 | 共享 | 🚧 |
+| [M1](./m1-gcc-stages-and-sections) | 从一行 gcc 到看懂 .o 里的段 | 共享 | ✅ |
 | [M2](./m2-nm-undefined-reference) | 用 nm 看懂 undefined reference ★MVP | 共享 | 🚧 |
 | [M3](./m3-static-library-archive) | 静态库：ar 归档与按 .o 拉入 | 共享 | 🚧 |
 | [M4](./m4-bare-metal-vma-lma) | 裸机、链接脚本、VMA/LMA | 嵌入式 | 🚧 |
