@@ -117,12 +117,14 @@ html[data-reader="dark"] {
 }
 
 /* ================================================================
-   文章页布局：从视口左侧开始排布
-   
+   文章页布局：侧栏贴左，正文列在剩余空间居中
+
    72rem 的全局最大宽度用于首页等居中页面。VitePress 在
    ≥1440px 时也会用它偏移文档页的导航、侧栏和正文，在宽屏上
    形成巨大的左留白。只对“带侧栏”的三个布局根节点使用全视口宽度：
    这样可以让 VitePress 自身的 scoped 样式算出 0 偏移，也能保证三处对齐。
+   正文居中交给 VitePress 默认的 .container 居中逻辑，
+   不要再写 flex-start / margin-inline 覆盖把正文钉在左侧。
    ================================================================ */
 @media (min-width: 1440px) {
   .VPNavBar.has-sidebar,
@@ -130,21 +132,14 @@ html[data-reader="dark"] {
   .VPContent.has-sidebar {
     --vp-layout-max-width: 100vw;
   }
+}
 
-  .VPDoc.has-sidebar .container {
-    justify-content: flex-start;
+/* 空大纲页(如只有 h1 的占位页):大纲栏没有任何锚点时仍占据 flex 槽位,
+   会把正文挤得偏左。整栏隐藏,让正文在剩余空间真正居中。 */
+@media (min-width: 1280px) {
+  .VPDoc .container .aside:not(:has(.VPDocAsideOutline a)) {
+    display: none;
   }
-}
-/* 无大纲页(stub):正文左对齐贴 sidebar,阅读宽 44rem;
-   有大纲页(has-aside)沿用 VitePress 默认 688px + 右侧大纲 */
-.VPDoc.has-sidebar .content-container {
-  margin-inline-start: 0;
-  margin-inline-end: auto;
-  max-width: 44rem;
-}
-.VPDoc.has-sidebar .vp-doc {
-  max-width: none;
-  margin-inline: 0;
 }
 
 /* ── 读者三件套:字体/字号覆盖(主题色板由 data-reader 上面三档处理) ── */
