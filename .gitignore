@@ -11,6 +11,7 @@ localview/
 
 # 私有制作工作台（严禁进入公开站）
 third_party/private/
+/video-output/
 
 # Node / VitePress 构建产物
 node_modules/
